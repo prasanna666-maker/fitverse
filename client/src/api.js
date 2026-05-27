@@ -1,7 +1,8 @@
 import axios from "axios";
 
+// In production, use the deployed backend API URL; in development, fall back to /api (handled by Vite proxy)
 const API = axios.create({
-  baseURL: "/api",
+  baseURL: import.meta.env.VITE_API_URL || "/api",
 });
 
 export const getGyms = (params) => API.get("/gyms", { params });
